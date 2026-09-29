@@ -22,7 +22,7 @@ export default function IssuePage() {
   useEffect(() => {
     const fetchIssue = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/issue/${issueId}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/issue/${issueId}`);
         setIssue(res.data);
         setEditTitle(res.data.title);
         setEditDescription(res.data.description);
@@ -37,7 +37,7 @@ export default function IssuePage() {
     if (!editTitle.trim() || !editDescription.trim()) return;
     setSaving(true);
     try {
-      const res = await axios.patch(`http://localhost:3000/issue/${issueId}/update`, {
+      const res = await axios.patch(`${import.meta.env.VITE_API_URL}/issue/${issueId}/update`, {
         title: editTitle,
         description: editDescription,
       });
@@ -56,7 +56,7 @@ export default function IssuePage() {
     setToggling(true);
     try {
       const newStatus = issue.status === "open" ? "closed" : "open";
-      const res = await axios.patch(`http://localhost:3000/issue/${issueId}/status`, {
+      const res = await axios.patch(`${import.meta.env.VITE_API_URL}/issue/${issueId}/status`, {
         status: newStatus,
       });
       setIssue(res.data);
@@ -70,7 +70,7 @@ export default function IssuePage() {
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this issue?")) return;
     try {
-      await axios.delete(`http://localhost:3000/issue/delete/${issueId}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/issue/delete/${issueId}`);
 
       toast.success("Issue deleted successfully!");
 

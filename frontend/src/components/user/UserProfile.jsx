@@ -22,9 +22,9 @@ export default function UserProfile() {
     const fetchProfileData = async () => {
       try {
         const [userRes, reposRes, issuesRes] = await Promise.all([
-          axios.get(`http://localhost:3000/userProfile/${id}`),
-          axios.get(`http://localhost:3000/repo/user/${id}`),
-          axios.get(`http://localhost:3000/issue/user/${id}`),
+          axios.get(`${import.meta.env.VITE_API_URL}/userProfile/${id}`),
+          axios.get(`${import.meta.env.VITE_API_URL}/repo/user/${id}`),
+          axios.get(`${import.meta.env.VITE_API_URL}/issue/user/${id}`),
         ]);
 
         setUser(userRes.data);
@@ -50,7 +50,7 @@ export default function UserProfile() {
     if (!usernameInput.trim()) return;
     setSaving(true);
     try {
-      const res = await axios.patch(`http://localhost:3000/userProfile/${id}/update`, {
+      const res = await axios.patch(`${import.meta.env.VITE_API_URL}/userProfile/${id}/update`, {
         username: usernameInput,
       });
       setUser(res.data);

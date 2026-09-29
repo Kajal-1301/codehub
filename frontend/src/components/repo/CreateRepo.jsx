@@ -29,7 +29,7 @@ function CreateRepository() {
     try {
       setLoading(true);
 
-      const res = await axios.post("http://localhost:3000/repo/create", { name, description, visibility, owner: userId });
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/repo/create`, { name, description, visibility, owner: userId });
 
       const repoId = res.data.repositoryID;
 

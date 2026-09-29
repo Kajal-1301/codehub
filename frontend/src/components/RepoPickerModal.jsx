@@ -13,7 +13,7 @@ function RepoPickerModal({ onClose }) {
     useEffect(() => {
         const fetchRepos = async () => {
             try {
-                const res = await axios.get(`http://localhost:3000/repo/user/${userId}`);
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/repo/user/${userId}`);
                 setRepos(res.data.repositories);
             } catch (err) {
                 console.error(err);

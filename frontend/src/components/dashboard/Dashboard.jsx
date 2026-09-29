@@ -131,7 +131,7 @@ export default function Dashboard() {
 
     const fetchRepositories = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/repo/user/${userId}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/repo/user/${userId}`);
         setRepositories(response.data.repositories || []);
       } catch (err) {
         console.error("Error while fetching user repositories: ", err);

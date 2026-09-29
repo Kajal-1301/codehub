@@ -19,7 +19,7 @@ export default function CreateIssue() {
     useEffect(() => {
         const fetchRepo = async () => {
             try {
-                const res = await axios.get(`http://localhost:3000/repo/id/${id}`);
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/repo/id/${id}`);
                 setRepo(res.data);
             } catch (err) {
                 console.error(err);
@@ -42,7 +42,7 @@ export default function CreateIssue() {
         setError("");
 
         try {
-            const res = await axios.post(`http://localhost:3000/repo/id/${id}/issue/create`,{ title, description });
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/repo/id/${id}/issue/create`,{ title, description });
 
             toast.success("Issue created successfully!");
 

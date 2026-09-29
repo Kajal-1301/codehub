@@ -32,7 +32,7 @@ export default function RepoPage() {
   
     const fetchRepo = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/repo/id/${id}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/repo/id/${id}`);
         setRepo(res.data);
       } catch (err) {
         console.error("Failed to load repo:", err);
@@ -61,7 +61,7 @@ export default function RepoPage() {
   const saveEditing = async () => {
     setSaving(true);
     try {
-      const res = await axios.put(`http://localhost:3000/repo/update/${id}`, {
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}/repo/update/${id}`, {
         name: nameInput,
         description: descInput,
       });
@@ -82,7 +82,7 @@ export default function RepoPage() {
 
     setDeleting(true);
     try {
-      await axios.delete(`http://localhost:3000/repo/delete/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/repo/delete/${id}`);
 
       toast.success("Repository deleted successfully!");
 

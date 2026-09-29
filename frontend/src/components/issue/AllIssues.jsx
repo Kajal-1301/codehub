@@ -16,7 +16,7 @@ export default function AllIssues() {
   useEffect(() => {
     const fetchIssues = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/issue/user/${userId}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/issue/user/${userId}`);
         setIssues(res.data);
       } catch (err) {
         console.error(err);
