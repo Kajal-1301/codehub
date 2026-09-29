@@ -1,0 +1,102 @@
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 420px;
+  height: 420px;
+  top: -10%;
+  left: 5%;
+  background: radial-gradient(circle at 30% 30%, #2dd4bf, transparent 70%);
+  animation: drift1 18s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  bottom: -15%;
+  right: 0%;
+  background: radial-gradient(circle at 60% 40%, #14b8a6, transparent 70%);
+  animation: drift2 22s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  left: 45%;
+  background: radial-gradient(circle at 50% 50%, #5eead4, transparent 70%);
+  animation: drift3 16s ease-in-out infinite;
+}
+
+@keyframes drift1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(60px, 40px) scale(1.15);
+  }
+}
+
+@keyframes drift2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-50px, -30px) scale(1.1);
+  }
+}
+
+@keyframes drift3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translate(30px, -50px) scale(0.9);
+    opacity: 0.5;
+  }
+}
+
+.bg-grid {
+  position: absolute;
+  inset: -1px;
+  background-image:
+    linear-gradient(rgba(45, 212, 191, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridPan 40s linear infinite;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+@keyframes gridPan {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+
+  100% {
+    background-position: 96px 96px, 96px 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .orb,
+  .bg-grid {
+    animation: none;
+  }
+}
