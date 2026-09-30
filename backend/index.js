@@ -20,10 +20,13 @@ require("dotenv").config();
 
 // ------------------------------- Start server function  ----------------------------
 async function startServer() {
-    const app = express();                                                
+    const app = express();
     const port = process.env.PORT || 3000
 
-    app.use(cors({ origin: "*" }));
+    app.use(cors({
+        origin: "https://codehub-three-sooty.vercel.app"
+    }));
+
     app.use(express.json());
 
     try {
@@ -34,7 +37,7 @@ async function startServer() {
         process.exit(1);
     }
 
-    app.use("/" , mainRouter)
+    app.use("/", mainRouter)
 
 
     let user = "test";
@@ -43,14 +46,14 @@ async function startServer() {
 
     const io = new Server(httpServer, {
         cors: {
-            origin: "*",
+            origin: "https://codehub-three-sooty.vercel.app",
             methods: ["GET", "POST"],
         },
     })
 
     io.on("connection", (socket) => {
         socket.on("joinRoom", (userId) => {
-            user = userI;
+            user = userId;
             console.log("=====");
             console.log(user);
             console.log("=====");
@@ -72,7 +75,7 @@ async function startServer() {
 }
 
 // -------------------------------------------------------------------------
- 
+
 yargs(hideBin(process.argv))
     .command(                               // start command
         "start",

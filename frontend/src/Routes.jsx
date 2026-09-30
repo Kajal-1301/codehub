@@ -9,7 +9,7 @@ import UserProfile from "./components/user/UserProfile";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import LandingPage from "./components/landingPage/LandingPage";
-import CreateRepository from "./components/repo/createRepo";
+import CreateRepository from "./components/repo/CreateRepo";
 import RepoPage from "./components/repo/RepoPage";
 import CreateIssue from "./components/issue/CreateIssue";
 import IssuePage from "./components/issue/issuePage";
